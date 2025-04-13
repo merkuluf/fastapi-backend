@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:16.4-bookworm
+    ports:
+      - '5444:5432'
+    environment:
+      POSTGRES_DB: polar
+      POSTGRES_USER: polar_api
+      POSTGRES_PASSWORD: polar_pwd
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:
